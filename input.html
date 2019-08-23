@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+
+    </style>
+  </head>
+  <body>
+    <div>
+    <p id="info">Input page</hi>
+      <button id="submit" >Click me to start!</button>
+    </div>
+    <script>
+      const { ipcRenderer } = require('electron')
+      document.getElementById('submit').addEventListener('click', ()=>{
+      
+      ipcRenderer.send('submit', 'buttonClick')
+   })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+ div{
+  text-align:center;
+  width:500px;
+  margin:0 auto;
+ }   
+    </style>
+  </head>
+  <body>
+    <div>
+    <p id="info">Welcome to SHAPE!</hi>
+      <button id="click">Click me to start!</button>
+    </div>
+    <script>
+      const { ipcRenderer } = require('electron')
+      document.getElementById('click').addEventListener('click', ()=>{
+      
+         ipcRenderer.send('button', 'buttonClick')
+      })
+      ipcRenderer.on('info', (event,arg)=>{
+        document.getElementById('info').innerHTML = arg; 
+      })
+    </script>
+  </body>
+</html>
