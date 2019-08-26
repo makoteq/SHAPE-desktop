@@ -3,18 +3,20 @@
   <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <style>
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
   <body>
     <div>
-      Name<input id="name" type="text"><br>
-      Description<input id="description" type="text"><br>
-      facebook<input  id="fb" type="checkbox"> <input id="fbText" type="text"><br>
-      instagram<input id="ig" type="checkbox"> <input id="igText" type="text"><br>
-      github<input id="git" type="checkbox"> <input id="gitText" type="text"><br>
+    <form>
+      <i>Name</i><input class="inputText" id="name" type="text"><br>
+      <i>Description</i><input class="inputText" id="description" type="text"><br>
+      <input type="checkbox" id="fb" >
+      <label for="fb">Facebook</label>
+       <input class="inputText" id="fbText" type="text"><br>
+      <i>Instagram</i><input class="checkbox"  id="ig" type="checkbox"> <input class="inputText" id="igText" type="text"><br>
+      <i>Github</i><input class="checkbox"  id="git" type="checkbox"> <input class="inputText" id="gitText" type="text"><br>
       <button id="submit" >Click me to start!</button>
+    </form>
     </div>
     <script>
       const { ipcRenderer } = require('electron')
