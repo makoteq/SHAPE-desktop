@@ -2,19 +2,20 @@ const { app, BrowserWindow } = require("electron");
 const home = "desktop";
 const fs = require("fs");
 const { ipcMain } = require("electron");
-const mkdirp = require('mkdirp');
+const mkdirp = require("mkdirp");
 
-let text = require('./src/indexmodule.js')
-let name = 'maciek';
-let description = 'something'
-let isfacebook = 'none';
-const facebooklink = 'https://www.facebook.com/';
-let isinstagram = 'none';
-const instagramlink = 'https://www.instagram.com/';
-let isgithub = 'none';
-const githublink = 'https://github.com/';
+let text = require("./src/indexmodule.js");
+let name = "maciek";
+let description = "something";
+let isfacebook = "none";
+let facebooklink = "https://www.facebook.com/";
+let isinstagram = "none";
+let instagramlink = "https://www.instagram.com/";
+let isgithub = "none";
+let githublink = "https://github.com/";
 
 ipcMain.on("button", (event, arg) => {
+
   /* fs.writeFile(app.getPath(home)+'/test.txt', 'Hello content!', function (err) {
     if (err) throw err;
    event.reply('info','Saved! in '+app.getPath(home) )
@@ -27,26 +28,60 @@ ipcMain.on("button", (event, arg) => {
     }
   });
   input.loadFile("input.html");
+
+  ipcMain.on("name", (event, arg) => {
+    name=arg;
+  });
+  ipcMain.on("description", (event, arg) => {
+    description=arg;
+  });
+  ipcMain.on("fbValue", (event, arg) => {
+    facebooklink = arg;
+    isfacebook = "";
+  });
+  ipcMain.on("igValue", (event, arg) => {
+    instagramlink = arg;
+    isinstagram = "";
+  });
+  ipcMain.on("gitValue", (event, arg) => {
+    githublink = arg;
+    isgithub = "";
+  });
+
   ipcMain.on("submit", (event, arg) => {
-    generate()
-  })
+  
+
+    generate();
+    
+  });
 });
 
-function generate(){
-  mkdirp(app.getPath(home)+'/' + name + ' portfolio', function (err) {
+function generate() {
+  mkdirp(app.getPath(home) + "/" + name + " portfolio", function(err) {
     if (err) console.error(err);
-  fs.writeFile(app.getPath(home)+'/' + name + ' portfolio/index.html', text.site(name, description, isfacebook, facebooklink, isinstagram, instagramlink, isgithub, githublink),()=>{
+    fs.writeFile(
+      app.getPath(home) + "/" + name + " portfolio/index.html",
+      text.site(
+        name,
+        description,
+        isfacebook,
+        facebooklink,
+        isinstagram,
+        instagramlink,
+        isgithub,
+        githublink
+      ),
+      () => {}
+    );
+    fs.copyFile( "Desktop.png",app.getPath(home) + "/" + name + " portfolio/Desktop.png", err => {
+        if (err) throw err;
+      }
+    );
 
-  })
-  fs.copyFile('Desktop.png', app.getPath(home)+'/' + name + ' portfolio/Desktop.png', (err) => {
-    if (err) throw err;
-  })
-  
+    // and load the index.html of the app.
 
-  // and load the index.html of the app.
-  
-console.log("Saved! in " + app.getPath(home));
-});
+    console.log("Saved! in " + app.getPath(home));
+  });
 }
 function createWindow() {
   // Stwórz okno przeglądarki.

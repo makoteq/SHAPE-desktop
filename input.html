@@ -9,15 +9,32 @@
   </head>
   <body>
     <div>
-    <p id="info">Input page</hi>
+      Name<input id="name" type="text"><br>
+      Description<input id="description" type="text"><br>
+      facebook<input  id="fb" type="checkbox"> <input id="fbText" type="text"><br>
+      instagram<input id="ig" type="checkbox"> <input id="igText" type="text"><br>
+      github<input id="git" type="checkbox"> <input id="gitText" type="text"><br>
       <button id="submit" >Click me to start!</button>
     </div>
     <script>
       const { ipcRenderer } = require('electron')
-      document.getElementById('submit').addEventListener('click', ()=>{
-      
+      console.log(document.getElementById("ig").checked);
+      document.getElementById('submit').addEventListener('click', ()=>{    
+        if(document.getElementById("fb").checked==true){
+          ipcRenderer.send('fbValue',  document.getElementById('fbText').value);
+        }
+        if(document.getElementById("ig").checked==true){
+          ipcRenderer.send('igValue',  document.getElementById('igText').value);
+        }
+        if(document.getElementById("git").checked==true){
+          ipcRenderer.send('gitValue',  document.getElementById('gitText').value);
+        }
+      ipcRenderer.send('name', document.getElementById('name').value)
+      ipcRenderer.send('description',document.getElementById('description').value)
       ipcRenderer.send('submit', 'buttonClick')
+
    })
+
     </script>
   </body>
 </html>
