@@ -1,9 +1,10 @@
-$main:rgb(253, 209, 111);
-$blue:#01188A;
+$blue:orange;
 body{
-   background-image: url('../Desktop.png') ;
+   background-image: url('../img/example.jpeg') ;
    background-size: cover;
    font-family:  Helvetica, sans-serif;
+   color:black;
+   font-weight:bold;
 }
 div{
    text-align:center;
@@ -14,6 +15,14 @@ div{
      border:solid $blue;
      background:none;
      cursor: pointer;
+     border-radius:15px;
+     padding:10px;
+     width: 250px;
+     transition: .3s ease-out;
+  }
+  button:hover{
+    background-color: black;
+    color:white;
   }
   input[type=checkbox] + label {
    display: block;
@@ -78,5 +87,8 @@ div{
  }
  .inputText:focus {
    outline: none;
-   box-shadow: 0 10px 20px -6px $blue;
+   box-shadow: 0 10px 10px -6px $blue;
+ }
+ #info{
+  font-weight:bold;
  }

@@ -5,12 +5,14 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "compile":"electron-packager . Shape  --platform=win32 --arch=ia32 --overwrite  --icon=assets/favicon.ico "
   },
   "author": "makoteq",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^6.0.2"
+    "electron": "^6.0.2",
+    "electron-packager": "^14.0.4"
   },
   "dependencies": {
     "shapegenerator": "^1.0.3"

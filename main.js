@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app,Menu, BrowserWindow } = require("electron");
 const home = "desktop";
 const fs = require("fs");
 const { ipcMain } = require("electron");
@@ -21,14 +21,16 @@ ipcMain.on("button", (event, arg) => {
    event.reply('info','Saved! in '+app.getPath(home) )
   });*/
   let input = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 800,
+    icon: __dirname+'./assets/logo.png',
     webPreferences: {
       nodeIntegration: true
     }
-  });
+  })
+  input.setMenuBarVisibility(false);
   input.loadFile("input.html");
-
+});
   ipcMain.on("name", (event, arg) => {
     name=arg;
   });
@@ -52,9 +54,9 @@ ipcMain.on("button", (event, arg) => {
   
 
     generate();
-    
+   
   });
-});
+
 
 function generate() {
   mkdirp(app.getPath(home) + "/" + name + " portfolio", function(err) {
@@ -73,26 +75,26 @@ function generate() {
       ),
       () => {}
     );
-    fs.copyFile( "Desktop.png",app.getPath(home) + "/" + name + " portfolio/Desktop.png", err => {
+    fs.copyFile( __dirname+"/assets/Desktop.png",app.getPath(home) + "/" + name + " portfolio/Desktop.png", err => {
         if (err) throw err;
       }
     );
 
     // and load the index.html of the app.
-
     console.log("Saved! in " + app.getPath(home));
   });
 }
 function createWindow() {
   // Stwórz okno przeglądarki.
   let win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 800,
+    icon: __dirname+'./assets/logo.png',
     webPreferences: {
       nodeIntegration: true
     }
   });
-
+  win.setMenuBarVisibility(false)
   // and load the index.html of the app.
   win.loadFile("index.html");
   win.on("closed", () => {
@@ -100,4 +102,6 @@ function createWindow() {
   });
 }
 
-app.on("ready", createWindow);
+app.on("ready", function(){
+  createWindow()
+})

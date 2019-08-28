@@ -1,7 +1,9 @@
 body {
-  background-image: url("../Desktop.png");
+  background-image: url("../assets/example.jpeg");
   background-size: cover;
   font-family: Helvetica, sans-serif;
+  color: black;
+  font-weight: bold;
 }
 
 div {
@@ -11,9 +13,18 @@ div {
 }
 
 button {
-  border: solid #01188A;
+  border: solid orange;
   background: none;
   cursor: pointer;
+  border-radius: 15px;
+  padding: 10px;
+  width: 250px;
+  transition: .3s ease-out;
+}
+
+button:hover {
+  background-color: black;
+  color: white;
 }
 
 input[type=checkbox] + label {
@@ -47,8 +58,8 @@ input[type=checkbox] + label:active:before {
 }
 
 input[type=checkbox]:checked + label:before {
-  background-color: #01188A;
-  border-color: #01188A;
+  background-color: orange;
+  border-color: orange;
   color: #fff;
 }
 
@@ -67,18 +78,22 @@ input[type=checkbox]:checked:disabled + label:before {
   margin: 0 auto;
   display: flex;
   width: 250px;
-  color: #01188A;
+  color: orange;
   text-align: center;
   font-size: 18px;
   font-weight: 300;
   height: 30px;
   border: 0;
   background: none;
-  border-bottom: 1px solid #01188A;
+  border-bottom: 1px solid orange;
   transition: box-shadow .3s ease-out;
 }
 
 .inputText:focus {
   outline: none;
-  box-shadow: 0 10px 20px -6px #01188A;
+  box-shadow: 0 10px 10px -6px orange;
+}
+
+#info {
+  font-weight: bold;
 }
