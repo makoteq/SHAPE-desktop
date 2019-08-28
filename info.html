@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Info</title>   
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div>
+        <p>Your website has been saved in</p>
+        <p id="info"></p>
+        <p>directory</p>
+</div>
+<script>
+const { ipcRenderer  } = require("electron")
+ipcRenderer.send('path','ready')
+    ipcRenderer.on('path',(event, arg) => {
+
+            document.getElementById('info').innerHTML=arg;
+          })</script>
+</body>
+
+</html>

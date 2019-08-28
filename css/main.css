@@ -96,4 +96,5 @@ input[type=checkbox]:checked:disabled + label:before {
 
 #info {
   font-weight: bold;
+  font-size: 2em;
 }

@@ -27,6 +27,7 @@ ipcMain.on("button", (event, arg) => {
     webPreferences: {
       nodeIntegration: true
     }
+    
   })
   input.setMenuBarVisibility(false);
   input.loadFile("input.html");
@@ -54,7 +55,6 @@ ipcMain.on("button", (event, arg) => {
   
 
     generate();
-   
   });
 
 
@@ -79,7 +79,19 @@ function generate() {
         if (err) throw err;
       }
     );
-
+    let info = new BrowserWindow({
+      width: 600,
+      height: 400,
+      icon: __dirname+'./assets/logo.png',
+      webPreferences: {
+        nodeIntegration: true
+      }
+      
+    })
+    info.loadFile("info.html");
+    ipcMain.on("path", (event, arg) => {
+      event.reply('path',app.getPath(home));
+    })
     // and load the index.html of the app.
     console.log("Saved! in " + app.getPath(home));
   });
