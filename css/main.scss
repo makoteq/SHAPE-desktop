@@ -1,9 +1,10 @@
-$blue:orange;
+$primary:rgb(39, 39, 39);
 body{
-   background-image: url('../assets/example.jpeg') ;
+   /*background-image: url('../assets/example.jpeg') ;*/
+   background-color: white;
    background-size: cover;
    font-family:  Helvetica, sans-serif;
-   color:black;
+   color:rgb(39, 39, 39);
    font-weight:bold;
 }
 div{
@@ -12,7 +13,7 @@ div{
    margin:0 auto;
   }   
   button{
-     border:solid $blue;
+     border:solid $primary;
      background:none;
      cursor: pointer;
      border-radius:15px;
@@ -21,7 +22,7 @@ div{
      transition: .3s ease-out;
   }
   button:hover{
-    background-color: black;
+    background-color: $primary;
     color:white;
   }
   input[type=checkbox] + label {
@@ -55,8 +56,8 @@ div{
  }
  
  input[type=checkbox]:checked + label:before {
-   background-color: $blue;
-   border-color: $blue;
+   background-color: $primary;
+   border-color: $primary;
    color: #fff;
  }
  
@@ -75,19 +76,19 @@ div{
    margin:0 auto;
    display: flex;
    width: 250px;
-   color: $blue;
+   color: $primary;
    text-align: center;
    font-size: 18px;
    font-weight: 300;
    height: 30px;
    border: 0;
    background: none;
-   border-bottom: 1px solid $blue;
+   border-bottom: 1px solid $primary;
    transition: box-shadow .3s ease-out;
  }
  .inputText:focus {
    outline: none;
-   box-shadow: 0 10px 10px -6px $blue;
+   box-shadow: 0 10px 10px -6px $primary;
  }
  #info{
   font-weight:bold;
