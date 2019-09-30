@@ -1,44 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Input page</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
   </head>
   <body>
     <div>
-    <form>
-      <i>Name</i><input class="inputText" id="name" type="text"><br>
-      <i>Description</i><input class="inputText" id="description" type="text"><br>
-      <input type="checkbox" id="fb" >
-      <label for="fb">Facebook</label>
-       <input placeholder="Link to your account" class="inputText" id="fbText" type="text"><br>
-       <input type="checkbox" id="ig" >
-       <label for="ig">Instagram</label> <input placeholder="Link to your account" class="inputText" id="igText" type="text"><br>
-      <input type="checkbox" id="git" >
-      <label for="git">Github</label><input placeholder="Link to your account" class="inputText" id="gitText" type="text"><br>
-      <button id="submit" >SUBMIT</button>
-    </form>
+      <form>
+        <i>Name</i><input class="inputText" id="name" type="text" /><br />
+        <i>Description</i
+        ><input class="inputText" id="description" type="text" /><br />
+        <input type="checkbox" id="fb" />
+        <label for="fb">Facebook</label>
+        <input
+          style="display: none"
+          class="inputText"
+          id="fbText"
+          type="text"
+        /><br />
+        <input type="checkbox" id="ig" />
+        <label for="ig">Instagram</label>
+        <input
+          style="display: none"
+          class="inputText"
+          id="igText"
+          type="text"
+        /><br />
+        <input type="checkbox" id="git" />
+        <label for="git">Github</label
+        ><input
+          style="display:none"
+          class="inputText"
+          id="gitText"
+          type="text"
+        /><br />
+        <button id="submit">SUBMIT</button>
+      </form>
     </div>
     <script>
-      const { ipcRenderer } = require('electron')
+      const { ipcRenderer } = require("electron");
       console.log(document.getElementById("ig").checked);
-      document.getElementById('submit').addEventListener('click', ()=>{    
-        if(document.getElementById("fb").checked==true){
-          ipcRenderer.send('fbValue',  document.getElementById('fbText').value);
-        }
-        if(document.getElementById("ig").checked==true){
-          ipcRenderer.send('igValue',  document.getElementById('igText').value);
-        }
-        if(document.getElementById("git").checked==true){
-          ipcRenderer.send('gitValue',  document.getElementById('gitText').value);
-        }
-      ipcRenderer.send('name', document.getElementById('name').value)
-      ipcRenderer.send('description',document.getElementById('description').value)
-      ipcRenderer.send('submit', 'buttonClick')
 
-   })
+      document.getElementById("fb").addEventListener("click", () => {
+        toggle('fb');
+      });
+      document.getElementById("ig").addEventListener("click", () => {
+        toggle('ig');
+      });
+      document.getElementById("git").addEventListener("click", () => {
+        toggle('git');
+      });
+      function toggle(id){
+      let x = document.getElementById(id+"Text");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
 
+      document.getElementById("submit").addEventListener("click", () => {
+        if (document.getElementById("fb").checked == true) {
+          ipcRenderer.send("fbValue", document.getElementById("fbText").value);
+        }
+        if (document.getElementById("ig").checked == true) {
+          ipcRenderer.send("igValue", document.getElementById("igText").value);
+        }
+        if (document.getElementById("git").checked == true) {
+          ipcRenderer.send(
+            "gitValue",
+            document.getElementById("gitText").value
+          );
+        }
+        ipcRenderer.send("name", document.getElementById("name").value);
+        ipcRenderer.send(
+          "description",
+          document.getElementById("description").value
+        );
+        ipcRenderer.send("submit", "buttonClick");
+      });
     </script>
   </body>
 </html>

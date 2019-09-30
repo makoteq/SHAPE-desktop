@@ -1,3 +1,5 @@
+/* Project by Maciej Kotowski https://github.com/makoteq*/
+
 const { app,Menu, BrowserWindow } = require("electron");
 const home = "desktop";
 const fs = require("fs");
