@@ -13,7 +13,6 @@
     <script>
       const { ipcRenderer } = require('electron')
       document.getElementById('click').addEventListener('click', ()=>{
-      
          ipcRenderer.send('button', 'buttonClick')
       })
       ipcRenderer.on('info', (event,arg)=>{
