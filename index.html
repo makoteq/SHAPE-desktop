@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body>
-    <div>
+    <div class="container">
     <p id="info">Welcome in SHAPE!</p>
-      <button id="click">Click me to start!</button>
+      <button class="btn btn-dark" id="click">Click me to start!</button>
     </div>
     <script>
       const { ipcRenderer } = require('electron')

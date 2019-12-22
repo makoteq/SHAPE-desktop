@@ -23,13 +23,13 @@ ipcMain.on("button", (event, arg) => {
   });*/
   let input = new BrowserWindow({
     width: 600,
-    height: 800,
+    height: 500,
     icon: __dirname + "./assets/logo.png",
     webPreferences: {
       nodeIntegration: true
     }
   });
- // input.setMenuBarVisibility(false);
+  input.setMenuBarVisibility(false);
   input.loadFile("input.html");
 });
 ipcMain.on("name", (event, arg) => {
@@ -56,7 +56,6 @@ ipcMain.on("submit", (event, arg) => {
 });
 
 function generate() {
-  console.log('generate')
   mkdirp(app.getPath(home) + "/" + name + " portfolio", function(err) {
     if (err) console.error(err);
     fs.writeFile(
@@ -104,7 +103,7 @@ function createWindow() {
   // Stwórz okno przeglądarki.
   let win = new BrowserWindow({
     width: 600,
-    height: 800,
+    height: 500,
     icon: __dirname + "./assets/logo.png",
     webPreferences: {
       nodeIntegration: true
