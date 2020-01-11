@@ -1,4 +1,4 @@
-/* Project by Maciej Kotowski https://github.com/makoteq*/
+/* Project by makoteq https://github.com/makoteq*/
 
 const { app, Menu, BrowserWindow } = require("electron");
 const home = "desktop";
@@ -7,8 +7,8 @@ const { ipcMain } = require("electron");
 const mkdirp = require("mkdirp");
 
 let text = require("./src/indexmodule.js");
-let name = "maciek";
-let description = "something";
+let name = "";
+let description = "";
 let isfacebook = "none";
 let facebooklink = "https://www.facebook.com/";
 let isinstagram = "none";
@@ -17,10 +17,6 @@ let isgithub = "none";
 let githublink = "https://github.com/";
 
 ipcMain.on("button", (event, arg) => {
-  /* fs.writeFile(app.getPath(home)+'/test.txt', 'Hello content!', function (err) {
-    if (err) throw err;
-   event.reply('info','Saved! in '+app.getPath(home) )
-  });*/
   let input = new BrowserWindow({
     width: 600,
     height: 500,
@@ -30,7 +26,7 @@ ipcMain.on("button", (event, arg) => {
     }
   });
   input.setMenuBarVisibility(false);
-  input.loadFile("input.html");
+  input.loadFile("./src/input.html");
 });
 ipcMain.on("name", (event, arg) => {
   name = arg;
@@ -72,13 +68,13 @@ function generate() {
       ),
       () => {}
     );
-    fs.copyFile(
+  /*  fs.copyFile(
       __dirname + "/assets/Desktop.png",
       app.getPath(home) + "/" + name + " portfolio/Desktop.png",
       err => {
         if (err) throw err;
       }
-    );
+    );*/
     let info = new BrowserWindow({
       width: 600,
       height: 400,
@@ -88,7 +84,7 @@ function generate() {
       }
     });
     info.setMenuBarVisibility(false);
-    info.loadFile("info.html");
+    info.loadFile("./src/info.html");
     ipcMain.on("path", (event, arg) => {
       event.reply("path", app.getPath(home));
     });
@@ -110,8 +106,7 @@ function createWindow() {
     }
   });
   win.setMenuBarVisibility(false);
-  // and load the index.html of the app.
-  win.loadFile("index.html");
+  win.loadFile("./index.html");
   win.on("closed", () => {
     app.quit();
   });

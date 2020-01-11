@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <title>Input page</title>
   <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -51,13 +51,18 @@
       console.log(document.getElementById(media[x] + "Text").value);
     }
     document.getElementById("submit").addEventListener("click", () => {
+      console.log(document.getElementById("name").value);
        for (let x=0; x<3; x++  ){
         console.log(x);
         if (document.getElementById(media[x]).checked == true) {
         ipcRenderer.send(media[x]+"Value", document.getElementById(media[x]+"Text").value);
       }
       }
+      ipcRenderer.send("name", document.getElementById("name").value);
+      ipcRenderer.send("description", document.getElementById("description").value);
+//submit data
       ipcRenderer.send("submit", "buttonClick");
+
     });
   </script>
 </body>

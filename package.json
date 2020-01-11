@@ -15,7 +15,6 @@
     "electron-packager": "^14.0.4"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "shapegenerator": "^1.0.3"
+    "bootstrap": "^4.4.1"
   }
 }
